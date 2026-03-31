@@ -11,7 +11,13 @@ import {
 } from 'react-icons/hi';
 import { GiFullPizza, GiHamburger, GiDonut, GiSushis } from "react-icons/gi";
 import { FaApple, FaGooglePlay, FaQuoteLeft } from "react-icons/fa";
-
+import { 
+  HiOutlineSearch, 
+  HiOutlineFire,
+} from 'react-icons/hi';
+import { FiSearch, FiShoppingCart } from 'react-icons/fi';
+import { TbTruckDelivery } from 'react-icons/tb';
+import app from '../assets/app.jpeg'
 const Home = () => {
   const categories = [
     { name: 'Pizza', icon: GiFullPizza },
@@ -41,7 +47,50 @@ const Home = () => {
       transition: { staggerChildren: 0.15 },
     },
   };
+const features = [
+    { 
+      title: "Smart Search", 
+      desc: "By meal, restaurant, or category.", 
+      icon: HiOutlineSearch 
+    },
+    { 
+      title: "Location-based", 
+      desc: "Suggestions tailored to your area.", 
+      icon: HiOutlineLocationMarker 
+    },
+    { 
+      title: "Trending Meals", 
+      desc: "See what's popular and trending right now.", 
+      icon: HiOutlineFire 
+    },
+    { 
+      title: "Personalized", 
+      desc: "Recommendations based on past orders.", 
+      icon: HiOutlineSparkles 
+    },
+  ];
 
+  // بيانات قسم الخطوات
+  const steps = [
+    { 
+      id: "01", 
+      title: "Browse or Search", 
+      desc: "Find your favorite restaurants or meals.", 
+      icon: FiSearch 
+    },
+    { 
+      id: "02", 
+      title: "Add to Cart", 
+      desc: "Add meals and drinks to your cart.", 
+      icon: FiShoppingCart 
+    },
+    { 
+      id: "03", 
+      title: "Checkout & Track", 
+      desc: "Pay securely and track your order.", 
+      icon: TbTruckDelivery 
+    },
+  ];
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: { y: 0, opacity: 1 },
@@ -82,12 +131,23 @@ const Home = () => {
             <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-[#121212] text-white px-8 py-4 rounded-full font-bold hover:bg-[#D4AC0D] hover:text-black transition-colors duration-300 flex items-center gap-2 shadow-lg">
               Online Order
             </motion.button>
-            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-white border border-gray-200 text-[#121212] px-6 py-4 rounded-full font-bold flex items-center gap-2 shadow-sm">
-              <FaApple className="text-xl" /> App Store
-            </motion.button>
-            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-white border border-gray-200 text-[#121212] px-6 py-4 rounded-full font-bold flex items-center gap-2 shadow-sm">
+          <motion.a
+  href="https://apps.apple.com/eg/app/keeto/id6759287824"
+  target="_blank"
+  rel="noopener noreferrer"
+  whileHover={{ scale: 1.05 }} 
+  whileTap={{ scale: 0.95 }} 
+  className="bg-white border border-gray-200 text-[#121212] px-6 py-4 rounded-full font-bold flex items-center gap-2 shadow-sm cursor-pointer"
+>
+  <FaApple className="text-xl" /> App Store
+</motion.a>
+            <motion.a
+           href="https://play.google.com/store/apps/details?id=com.wego.keeto"
+            target="_blank"
+  rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-white border border-gray-200 text-[#121212] px-6 py-4 rounded-full font-bold flex items-center gap-2 shadow-sm">
               <FaGooglePlay className="text-xl text-green-600" /> Google Play
-            </motion.button>
+            </motion.a>
           </div>
 
           <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-black/10">
@@ -214,7 +274,122 @@ const Home = () => {
           })}
         </motion.div>
       </section>
+<div className="py-24 overflow-hidden bg-gradient-to-b from-[#FFF8E1]/30 to-white">
+      
+      {/* --- SECTION 1: Find What You Love --- */}
+      <section className="container mx-auto px-6 mb-32">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          
+          {/* النص والوصف (اليسار) */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6"
+          >
+            <div className="inline-block bg-[#FFF8E1] text-[#D4AC0D] px-4 py-2 rounded-full font-bold text-sm border border-[#D4AC0D]/20">
+              Discover Instantly ✨
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#121212] leading-tight">
+              Find What You Love — <br />
+              <span className="text-[#D4AC0D]">Instantly</span>
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-md">
+              No more wasting time scrolling. Keeto helps you discover meals based on your taste, location, and preferences.
+            </p>
+          </motion.div>
 
+          {/* كروت المميزات (اليمين) */}
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid sm:grid-cols-2 gap-6"
+          >
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <motion.div 
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="bg-white p-8 rounded-[2rem] shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 group"
+                >
+                  <div className="w-14 h-14 bg-[#FFF8E1] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#D4AC0D] transition-colors duration-300">
+                    <Icon className="text-3xl text-[#D4AC0D] group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#121212] mb-2">{feature.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{feature.desc}</p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* --- SECTION 2: Order in 3 Simple Steps --- */}
+      <section className="container mx-auto px-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="bg-[#121212] rounded-[3rem] p-10 md:p-20 relative overflow-hidden shadow-2xl"
+        >
+          {/* تأثيرات إضاءة في الخلفية */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4AC0D] rounded-full blur-[150px] opacity-20 pointer-events-none"></div>
+          
+          <div className="text-center mb-16 relative z-10">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
+              Order in 3 <span className="text-[#D4AC0D]">Simple Steps</span>
+            </h2>
+            <p className="text-gray-400 text-lg">Your favorite meal is just a few clicks away.</p>
+          </div>
+
+          <div className="relative z-10">
+            {/* الخط الواصل بين الخطوات (يظهر في الشاشات الكبيرة فقط) */}
+            <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-1 bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
+
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid md:grid-cols-3 gap-12 relative"
+            >
+              {steps.map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <motion.div 
+                    key={index}
+                    variants={itemVariants}
+                    className="flex flex-col items-center text-center group"
+                  >
+                    {/* أيقونة الخطوة */}
+                    <div className="relative mb-8">
+                      <div className="w-24 h-24 bg-[#1A1A1A] border-2 border-gray-700 rounded-full flex items-center justify-center group-hover:border-[#D4AC0D] transition-colors duration-500 shadow-xl relative z-10">
+                        <Icon className="text-4xl text-[#D4AC0D] group-hover:scale-110 transition-transform duration-300" />
+                      </div>
+                      {/* رقم الخطوة */}
+                      <div className="absolute -top-2 -right-2 bg-[#D4AC0D] text-black w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-lg z-20">
+                        {step.id}
+                      </div>
+                    </div>
+
+                    {/* نص الخطوة */}
+                    <h3 className="text-2xl font-bold text-white mb-3">{step.title}</h3>
+                    <p className="text-gray-400 max-w-[220px]">{step.desc}</p>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
+    </div>
       {/* --- 4. POPULAR RESTAURANTS --- */}
       <section className="container mx-auto px-6 mb-24">
         <div className="flex justify-between items-center mb-8">
@@ -326,21 +501,30 @@ const Home = () => {
             </p>
             
             <div className="flex flex-wrap gap-4 pt-4">
-              <motion.button whileHover={{ scale: 1.05 }} className="bg-white text-black px-6 py-4 rounded-full font-bold flex items-center gap-3 hover:bg-gray-100 transition-all">
-                <FaApple className="text-3xl" />
-                <div className="text-left">
-                  <p className="text-[10px] uppercase text-gray-500 leading-none">Download on the</p>
-                  <p className="text-lg leading-none mt-1">App Store</p>
-                </div>
-              </motion.button>
+            <motion.a 
+  href="https://apps.apple.com/eg/app/keeto/id6759287824"
+  target="_blank"
+  rel="noopener noreferrer"
+  whileHover={{ scale: 1.05 }} 
+  whileTap={{ scale: 0.95 }}
+  className="bg-white text-black px-6 py-4 rounded-full font-bold flex items-center gap-3 hover:bg-gray-100 transition-all cursor-pointer"
+>
+  <FaApple className="text-3xl" />
+  <div className="text-left">
+    <p className="text-[10px] uppercase text-gray-500 leading-none">Download on the</p>
+    <p className="text-lg leading-none mt-1">App Store</p>
+  </div>
+</motion.a>
               
-              <motion.button whileHover={{ scale: 1.05 }} className="bg-white text-black px-6 py-4 rounded-full font-bold flex items-center gap-3 hover:bg-gray-100 transition-all">
+              <motion.a 
+                href="https://play.google.com/store/apps/details?id=com.wego.keeto"
+              whileHover={{ scale: 1.05 }} className="bg-white text-black px-6 py-4 rounded-full font-bold flex items-center gap-3 hover:bg-gray-100 transition-all">
                 <FaGooglePlay className="text-3xl text-green-600" />
                 <div className="text-left">
                   <p className="text-[10px] uppercase text-gray-500 leading-none">GET IT ON</p>
                   <p className="text-lg leading-none mt-1">Google Play</p>
                 </div>
-              </motion.button>
+              </motion.a>
             </div>
           </div>
 
@@ -351,26 +535,26 @@ const Home = () => {
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
               className="relative"
             >
-              <div className="w-[250px] h-[500px] bg-white rounded-[3rem] border-8 border-gray-800 shadow-2xl overflow-hidden relative">
-                {/* Simulated App Screen */}
-                <div className="w-full h-full bg-gray-50 flex flex-col">
-                  <div className="h-20 bg-[#F4D03F] rounded-b-3xl flex items-end p-4">
-                    <h3 className="font-extrabold text-black text-xl">Keeto.</h3>
-                  </div>
-                  <div className="p-4 space-y-4">
-                    <div className="h-32 bg-gray-200 rounded-2xl w-full animate-pulse"></div>
-                    <div className="h-16 bg-gray-200 rounded-2xl w-full animate-pulse"></div>
-                    <div className="h-16 bg-gray-200 rounded-2xl w-full animate-pulse"></div>
-                  </div>
-                  <motion.div 
-                    animate={{ scale: [1, 1.1, 1] }} 
-                    transition={{ repeat: Infinity, duration: 2 }}
-                    className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-[#121212] text-white px-8 py-3 rounded-full font-bold text-sm shadow-lg"
-                  >
-                    Track Order
-                  </motion.div>
-                </div>
-              </div>
+            <div className="w-[250px] h-[500px] bg-white rounded-[3rem] border-8 border-gray-800 shadow-2xl overflow-hidden relative group">
+  {/* صورة التطبيق (بدلاً من الشاشة الوهمية) */}
+  <img 
+    src={app} 
+    alt="Keeto App Screen" 
+    className="w-full h-full py-3 object-cover rounded-[2.5rem] group-hover:scale-105 transition-transform duration-500"
+  />
+
+  {/* زر تتبع الطلب (محفوظ من الكود الأصلي) */}
+  <motion.div 
+    animate={{ scale: [1, 1.1, 1] }} 
+    transition={{ repeat: Infinity, duration: 2 }}
+    className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-[#121212] text-white px-8 py-3 rounded-full font-bold text-sm shadow-lg z-10"
+  >
+    Track Order
+  </motion.div>
+
+  {/* تأثير "الجزيرة الديناميكية" (اختياري، يضيف لمسة واقعية) */}
+  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-6 w-28 bg-gray-900 rounded-b-xl z-20"></div>
+</div>
 
               {/* Floating Emojis around phone */}
               <motion.div animate={{ y: [0, -30, 0], rotate: 360 }} transition={{ repeat: Infinity, duration: 6 }} className="absolute -top-10 -right-10 text-6xl drop-shadow-lg">🍔</motion.div>
