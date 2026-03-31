@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom"; // تغيير Link إلى NavLink
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import logo from '../assets/NewKeetaLogo.png';
+import logo from '../assets/NewKeetaLogo.jpeg';
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
