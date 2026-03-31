@@ -64,7 +64,7 @@ const Contact = () => {
           transition={{ delay: 0.3 }}
           className="text-lg text-gray-600"
         >
-          Have a question or feedback? We would love to hear from you. Get in touch with our team.
+          Have a question or want to partner with us? We would love to hear from you. Get in touch with our team.
         </motion.p>
       </section>
 
@@ -98,14 +98,15 @@ const Contact = () => {
         </motion.div>
       </section>
 
-      {/* Contact Form Section */}
+      {/* Partner Registration Form Section */}
       <section className="container mx-auto px-6">
-        <div className="bg-white rounded-[2rem] p-10 shadow-xl relative max-w-4xl mx-auto">
+        <div className="bg-white rounded-[2rem] p-10 shadow-xl relative max-w-4xl mx-auto border border-gray-100">
 
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-extrabold">
-              Send Us a <span className="text-[#D4AC0D]">Message</span>
+            <h2 className="text-4xl font-extrabold mb-4">
+              Partner With <span className="text-[#D4AC0D]">Keeto</span>
             </h2>
+            <p className="text-gray-500">Register your restaurant or cafe to join our growing network.</p>
           </div>
 
           <motion.form 
@@ -116,53 +117,86 @@ const Contact = () => {
             className="space-y-6"
           >
             <div className="grid md:grid-cols-2 gap-6">
-              {/* Name Input */}
+              
+              {/* Restaurant / Cafe Name (اسم المطعم/ الكافيه) */}
               <div className="flex flex-col gap-2">
-                <label className="font-bold text-gray-700 ml-1">Your Name</label>
+                <label className="font-bold text-gray-700 ml-1">Restaurant / Cafe Name</label>
+                <input 
+                  type="text" 
+                  placeholder="e.g. The Great Cafe" 
+                  className="bg-gray-50 border border-gray-200 text-gray-800 rounded-xl p-4 focus:outline-none focus:border-[#D4AC0D] focus:ring-2 focus:ring-[#D4AC0D]/20 transition-all"
+                />
+              </div>
+
+              {/* Business Type (النشاط) */}
+              <div className="flex flex-col gap-2">
+                <label className="font-bold text-gray-700 ml-1">Business Type</label>
+                <select className="bg-gray-50 border border-gray-200 text-gray-800 rounded-xl p-4 focus:outline-none focus:border-[#D4AC0D] focus:ring-2 focus:ring-[#D4AC0D]/20 transition-all appearance-none cursor-pointer">
+                  <option value="" disabled selected>Select activity...</option>
+                  <option value="restaurant">Restaurant</option>
+                  <option value="cafe">Cafe</option>
+                </select>
+              </div>
+
+              {/* Responsible Person Name (اسم المسؤول) */}
+              <div className="flex flex-col gap-2">
+                <label className="font-bold text-gray-700 ml-1">Manager / Contact Person</label>
                 <input 
                   type="text" 
                   placeholder="John Doe" 
                   className="bg-gray-50 border border-gray-200 text-gray-800 rounded-xl p-4 focus:outline-none focus:border-[#D4AC0D] focus:ring-2 focus:ring-[#D4AC0D]/20 transition-all"
                 />
               </div>
-              {/* Email Input */}
+
+              {/* Job Title (الوظيفه) */}
+              <div className="flex flex-col gap-2">
+                <label className="font-bold text-gray-700 ml-1">Job Title</label>
+                <input 
+                  type="text" 
+                  placeholder="e.g. Branch Manager" 
+                  className="bg-gray-50 border border-gray-200 text-gray-800 rounded-xl p-4 focus:outline-none focus:border-[#D4AC0D] focus:ring-2 focus:ring-[#D4AC0D]/20 transition-all"
+                />
+              </div>
+
+              {/* Phone Number (رقم التليفون) */}
+              <div className="flex flex-col gap-2">
+                <label className="font-bold text-gray-700 ml-1">Phone Number</label>
+                <input 
+                  type="tel" 
+                  placeholder="+20 123 456 7890" 
+                  className="bg-gray-50 border border-gray-200 text-gray-800 rounded-xl p-4 focus:outline-none focus:border-[#D4AC0D] focus:ring-2 focus:ring-[#D4AC0D]/20 transition-all"
+                />
+              </div>
+
+              {/* Email Address (ايميل) */}
               <div className="flex flex-col gap-2">
                 <label className="font-bold text-gray-700 ml-1">Email Address</label>
                 <input 
                   type="email" 
-                  placeholder="john@example.com" 
+                  placeholder="contact@business.com" 
                   className="bg-gray-50 border border-gray-200 text-gray-800 rounded-xl p-4 focus:outline-none focus:border-[#D4AC0D] focus:ring-2 focus:ring-[#D4AC0D]/20 transition-all"
                 />
               </div>
+
             </div>
 
-            {/* Subject Input */}
-            <div className="flex flex-col gap-2">
-              <label className="font-bold text-gray-700 ml-1">Subject</label>
-              <input 
-                type="text" 
-                placeholder="How can we help you?" 
-                className="bg-gray-50 border border-gray-200 text-gray-800 rounded-xl p-4 focus:outline-none focus:border-[#D4AC0D] focus:ring-2 focus:ring-[#D4AC0D]/20 transition-all"
-              />
-            </div>
-
-            {/* Message Textarea */}
-            <div className="flex flex-col gap-2">
-              <label className="font-bold text-gray-700 ml-1">Message</label>
+            {/* Additional Info / Comments (اختياري - تركته كمساحة إضافية مفيدة) */}
+            <div className="flex flex-col gap-2 pt-2">
+              <label className="font-bold text-gray-700 ml-1">Any additional information?</label>
               <textarea 
-                rows="5" 
-                placeholder="Write your message here..." 
+                rows="3" 
+                placeholder="Tell us more about your place..." 
                 className="bg-gray-50 border border-gray-200 text-gray-800 rounded-xl p-4 focus:outline-none focus:border-[#D4AC0D] focus:ring-2 focus:ring-[#D4AC0D]/20 transition-all resize-none"
               ></textarea>
             </div>
 
             {/* Submit Button */}
-            <div className="text-center pt-4">
+            <div className="text-center pt-6">
               <button 
                 type="button"
-                className="bg-[#D4AC0D] text-black px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full md:w-auto"
+                className="bg-[#D4AC0D] text-black px-12 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full md:w-auto"
               >
-                Send Message
+                Submit Request
               </button>
             </div>
           </motion.form>
@@ -176,7 +210,7 @@ const Contact = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="bg-[#121212] rounded-3xl p-12 text-center text-white relative overflow-hidden"
+          className="bg-[#121212] rounded-[3rem] p-12 text-center text-white relative overflow-hidden"
         >
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#D4AC0D]/30 rounded-full blur-[100px]"></div>
 
@@ -185,7 +219,7 @@ const Contact = () => {
           </h2>
 
           <p className="text-gray-300 mb-8 max-w-xl mx-auto relative z-10">
-            Our customer support team is available 24/7. Give us a call directly to resolve your issue immediately.
+            Our support team is available 24/7. Give us a call directly to resolve your issue immediately.
           </p>
 
           <div className="flex justify-center gap-4 flex-wrap relative z-10">
